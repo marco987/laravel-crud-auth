@@ -65,9 +65,7 @@ class ControllerAuthPerson extends Controller
      */
     public function show($id)
     {
-      $person = Person::findOrFail($id);
-
-      return view('person_mod', compact('person'));
+      //
     }
 
     /**
@@ -78,7 +76,9 @@ class ControllerAuthPerson extends Controller
      */
     public function edit($id)
     {
-        //
+      $person = Person::findOrFail($id);
+
+      return view('edit', compact('person'));
     }
 
     /**
@@ -90,7 +90,14 @@ class ControllerAuthPerson extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $validatedData = $request -> validate([
+        'name' => 'required',
+        'race' => 'required',
+        'cat_rfid' => 'required'
+      ]);
+      Person::whereId($id) -> update($validatedData);
+
+      return redirect('/');
     }
 
     /**
@@ -101,6 +108,8 @@ class ControllerAuthPerson extends Controller
      */
     public function destroy($id)
     {
-        //
+      Person::findOrFail($id) -> delete();
+
+      return redirect('/');
     }
 }
