@@ -3,15 +3,15 @@
 use Illuminate\Database\Seeder;
 use App\Person;
 
-class DatabaseSeeder extends Seeder
+class PeopleSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Run the database seeds.
      *
      * @return void
      */
     public function run()
     {
-        $this->call(PeopleSeeder::class);
+      factory(Person::class, 100) -> create();
     }
 }
