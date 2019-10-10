@@ -8,6 +8,16 @@ use App\Person;
 class ControllerAuthPerson extends Controller
 {
     /**
+    * Create a new controller instance.
+    *
+    * @return void
+    */
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -24,7 +34,9 @@ class ControllerAuthPerson extends Controller
      */
     public function create()
     {
-        //
+      $people = Person::all();
+
+      return view('create', compact('people'));
     }
 
     /**
@@ -35,7 +47,14 @@ class ControllerAuthPerson extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $validatedData = $request -> validate([
+        'name' => 'required',
+        'race' => 'required',
+        'cat_rfid' => 'required'
+      ]);
+      Person::create($validatedData);
+
+      return redirect('/');
     }
 
     /**
@@ -46,7 +65,9 @@ class ControllerAuthPerson extends Controller
      */
     public function show($id)
     {
-        //
+      $person = Person::findOrFail($id);
+
+      return view('person_mod', compact('person'));
     }
 
     /**

@@ -26,10 +26,44 @@ footer {
   align-items: center;
 }
 
+.auth {
+  width: 200px;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
 main {
   height: 100%;
   width: 100%;
   background-color: #ffed4a;
   overflow: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.box {
+  width: 300px;
+  height: 130px;
+  border: solid purple 3px;
+  border-radius: 10px;
+  padding: 10px;
+  margin: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+header a {
+  color: #ffed4a;
+}
+
+a {
+  color: purple;
+  display: block;
+  font-weight: bold;
 }
 
