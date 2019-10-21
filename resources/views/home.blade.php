@@ -2,7 +2,7 @@
 
 @section('section')
 
-  <h2> <a href="{{Route('create')}}">Crea nuovo utente</a> </h2>
+  <h2> <a href="{{Route('create')}}">Crea nuovo utente!</a> </h2>
 
   @foreach ($people as $person)
 
